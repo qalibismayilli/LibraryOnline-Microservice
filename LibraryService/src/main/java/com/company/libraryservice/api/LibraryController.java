@@ -1,5 +1,6 @@
 package com.company.libraryservice.api;
 
+import com.company.libraryservice.dto.AddBookRequest;
 import com.company.libraryservice.dto.LibraryDto;
 import com.company.libraryservice.service.LibraryService;
 import jakarta.validation.constraints.NotEmpty;
@@ -26,6 +27,12 @@ public class LibraryController {
 
     @GetMapping("/library/{id}")
     public ResponseEntity getLibraryById(@PathVariable @NotEmpty String id){
-        return ResponseEntity.ok(libraryService.getLibraryById(id));
+        return ResponseEntity.ok(libraryService.getAllBooksInLibraryById(id));
+    }
+
+    @PutMapping("/addBookToLibrary")
+    public ResponseEntity<Void> addBookToLibrary(@RequestBody AddBookRequest request){
+        libraryService.addBookToLibrary(request);
+        return ResponseEntity.ok().build();
     }
 }

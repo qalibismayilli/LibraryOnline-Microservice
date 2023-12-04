@@ -40,7 +40,11 @@ public class BookServiceApplication implements CommandLineRunner {
                 2002, "Wulf Dorn",
                 "Pegasus", "73437132784");
 
-        List<Book> list = bookRepository.saveAll(List.of(book1, book2, book3, book4));
+        Book book5 = new Book("Nutuk",
+                1965,"Mustafa Kemal Ataturk"
+                , "ODTU Yayincilik","234234623");
+
+        List<Book> list = bookRepository.saveAll(List.of(book1, book2, book3, book4, book5));
         System.out.println(list);
     }
 }
