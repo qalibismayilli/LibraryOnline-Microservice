@@ -26,7 +26,7 @@ public class LibraryController {
     }
 
     @GetMapping("/library/{id}")
-    public ResponseEntity getLibraryById(@PathVariable @NotEmpty String id){
+    public ResponseEntity<LibraryDto> getLibraryById(@PathVariable @NotEmpty String id){
         return ResponseEntity.ok(libraryService.getAllBooksInLibraryById(id));
     }
 

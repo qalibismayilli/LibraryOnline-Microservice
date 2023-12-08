@@ -15,7 +15,6 @@ public interface BookServiceClient {
     @GetMapping("/isbn/{isbn}")
     ResponseEntity<BookIdDto> getByIsbn(@PathVariable @NotEmpty String isbn);
 
-    @GetMapping("/book/{id}")
-    ResponseEntity<BookDto> getById(@PathVariable @NotEmpty String id);
-
+    @GetMapping("/book/{bookId}")
+    ResponseEntity<BookDto> getById(@PathVariable @NotEmpty String bookId);
 }
