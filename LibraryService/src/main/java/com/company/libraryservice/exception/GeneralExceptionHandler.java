@@ -1,5 +1,6 @@
 package com.company.libraryservice.exception;
 
+import com.company.libraryservice.client.ExceptionMessage;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -22,17 +23,22 @@ public class GeneralExceptionHandler extends ResponseEntityExceptionHandler {
                                                                   @NotNull HttpHeaders headers,
                                                                   @NotNull HttpStatusCode status,
                                                                   @NotNull WebRequest request) {
-        Map<String,String> errors = new HashMap<>();
+        Map<String, String> errors = new HashMap<>();
         ex.getBindingResult().getAllErrors().forEach(error -> {
-            String fieldName = ((FieldError)error).getField();
+            String fieldName = ((FieldError) error).getField();
             String errorMessage = error.getDefaultMessage();
             errors.put(fieldName, errorMessage);
         });
-        return new ResponseEntity<>(errors,HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(LibraryNotFoundException.class)
-    public ResponseEntity<?> handle(LibraryNotFoundException exception){
+    public ResponseEntity<?> handle(LibraryNotFoundException exception) {
         return new ResponseEntity<>(exception.getMessage(), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(BookNotFoundException.class)
+    public ResponseEntity<ExceptionMessage> handle(BookNotFoundException exception) {
+        return new ResponseEntity<>(exception.getExceptionMessage(), HttpStatus.resolve(exception.getExceptionMessage().status()));
     }
 }
