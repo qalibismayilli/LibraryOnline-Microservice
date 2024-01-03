@@ -1,6 +1,6 @@
 package com.company.libraryservice.config;
 
-import com.company.libraryservice.client.RetreiveMessageErrorDecoder;
+import com.company.libraryservice.client.RetrieveMessageErrorDecoder;
 import feign.Logger;
 import feign.codec.ErrorDecoder;
 import org.springframework.beans.factory.ObjectFactory;
@@ -17,13 +17,18 @@ public class FeignClientConfiguration {
         this.messageConverterObjectFactory = messageConverterObjectFactory;
     }
 
+
+//    Feign client error handling
+
     @Bean
     public ErrorDecoder errorDecoder(){
-        return new RetreiveMessageErrorDecoder();
+        return new RetrieveMessageErrorDecoder();
     }
 
     @Bean
-    public Logger.Level feingLoggerLevel(){
+    public Logger.Level feignLoggerLevel(){
         return Logger.Level.FULL;
     }
+
+
 }
