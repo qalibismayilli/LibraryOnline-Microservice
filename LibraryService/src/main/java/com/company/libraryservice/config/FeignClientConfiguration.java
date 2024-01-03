@@ -8,7 +8,6 @@ import org.springframework.boot.autoconfigure.http.HttpMessageConverters;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-
 @Configuration
 public class FeignClientConfiguration {
 
@@ -24,8 +23,7 @@ public class FeignClientConfiguration {
     }
 
     @Bean
-    public System.Logger.Level feingLoggerLevel(){
-        return System.Logger.Level.ALL;
+    public Logger.Level feingLoggerLevel(){
+        return Logger.Level.FULL;
     }
-
 }
