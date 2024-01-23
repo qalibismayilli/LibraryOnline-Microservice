@@ -17,7 +17,6 @@ public class FeignClientConfiguration {
         this.messageConverterObjectFactory = messageConverterObjectFactory;
     }
 
-
 //    Feign client error handling
 
     @Bean
@@ -29,6 +28,5 @@ public class FeignClientConfiguration {
     public Logger.Level feignLoggerLevel(){
         return Logger.Level.FULL;
     }
-
 
 }
