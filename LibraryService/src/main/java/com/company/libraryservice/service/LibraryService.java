@@ -9,6 +9,8 @@ import com.company.libraryservice.repository.LibraryRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class LibraryService {
     private final LibraryRepository libraryRepository;
@@ -19,7 +21,7 @@ public class LibraryService {
         this.bookServiceClient = bookServiceClient;
     }
 
-    public LibraryDto getAllBooksInLibraryById(String id){
+    public LibraryDto getAllBooksInLibraryById(String id) {
         Library library = libraryRepository.findById(id)
                 .orElseThrow(() -> new LibraryNotFoundException("library could not found by id"));
 
@@ -31,17 +33,24 @@ public class LibraryService {
     }
 
     @Transactional
-    public LibraryDto createLibrary(){
+    public LibraryDto createLibrary() {
         Library newLibrary = libraryRepository.save(new Library());
         return new LibraryDto(newLibrary.getId());
     }
 
     @Transactional
-    public void addBookToLibrary(AddBookRequest request){
+    public void addBookToLibrary(AddBookRequest request) {
         String bookId = bookServiceClient.getByIsbn(request.getIsbn()).getBody().getBookId();
         Library library = libraryRepository.findById(request.getId())
                 .orElseThrow(() -> new LibraryNotFoundException("library could not found by id"));
         library.getUserBook().add(bookId);
         libraryRepository.save(library);
+    }
+
+    public List<String> getAllLibraries() {
+        return libraryRepository.findAll()
+                .stream()
+                .map(l -> l.getId())
+                .toList();
     }
 }
