@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="BookService" />
         <module name="EurekaServer" />
+        <module name="ConfigServer" />
         <module name="LibraryService" />
         <module name="Gateway" />
       </profile>
@@ -16,6 +17,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="BookService" options="-parameters" />
+      <module name="ConfigServer" options="-parameters" />
       <module name="EurekaServer" options="-parameters" />
       <module name="Gateway" options="-parameters" />
       <module name="LibraryService" options="-parameters" />

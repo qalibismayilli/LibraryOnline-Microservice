@@ -24,7 +24,7 @@ public interface BookServiceClient {
 //    }
 
     @GetMapping("/book/{bookId}")
-//    @CircuitBreaker(name = "getById", fallbackMethod = "getBookByIdFallback")
+//    @CircuitBreaker(name = "getByIdCircuitBreaker", fallbackMethod = "getBookByIdFallback")
     ResponseEntity<BookDto> getById(@PathVariable(value = "bookId") @NotEmpty String bookId);
 
 //    default ResponseEntity<BookDto> getBookByIdFallback(String bookId, Exception exception){

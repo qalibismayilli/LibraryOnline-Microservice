@@ -18,7 +18,6 @@ public class FeignClientConfiguration {
     }
 
 //    Feign client error handling
-
     @Bean
     public ErrorDecoder errorDecoder(){
         return new RetrieveMessageErrorDecoder();
