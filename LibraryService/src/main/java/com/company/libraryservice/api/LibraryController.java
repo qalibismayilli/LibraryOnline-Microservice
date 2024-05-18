@@ -6,6 +6,7 @@ import com.company.libraryservice.service.LibraryService;
 import jakarta.validation.constraints.NotEmpty;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -23,6 +24,9 @@ public class LibraryController {
     private final Environment environment;
 
     private final LibraryService libraryService;
+
+    @Value("${library.service.count}")
+    private Integer count;
 
     public LibraryController(Environment environment, LibraryService libraryService) {
         this.environment = environment;
@@ -50,5 +54,10 @@ public class LibraryController {
     @GetMapping("/getAllLibraries")
     public ResponseEntity<List<String>> getAllLibraries() {
         return ResponseEntity.ok(libraryService.getAllLibraries());
+    }
+
+    @GetMapping("/getCount")
+    public ResponseEntity<String> getCount(){
+        return ResponseEntity.ok("librart service count :" + count);
     }
 }
