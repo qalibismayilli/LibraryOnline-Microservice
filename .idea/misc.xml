@@ -9,6 +9,7 @@
         <option value="$PROJECT_DIR$/LibraryService/pom.xml" />
         <option value="$PROJECT_DIR$/Gateway/pom.xml" />
         <option value="$PROJECT_DIR$/ConfigServer/pom.xml" />
+        <option value="$PROJECT_DIR$/KitaplikCommon/pom.xml" />
       </list>
     </option>
   </component>
