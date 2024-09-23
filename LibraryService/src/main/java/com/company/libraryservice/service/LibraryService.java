@@ -1,8 +1,8 @@
 package com.company.libraryservice.service;
 
-import com.company.bookservice.BookId;
-import com.company.bookservice.BookServiceGrpc;
-import com.company.bookservice.Isbn;
+import com.company.bookservice.dto.BookId;
+import com.company.bookservice.dto.BookServiceGrpc;
+import com.company.bookservice.dto.Isbn;
 import com.company.libraryservice.client.BookServiceClient;
 import com.company.libraryservice.dto.AddBookRequest;
 import com.company.libraryservice.dto.LibraryDto;
@@ -17,13 +17,15 @@ import java.util.List;
 
 @Service
 public class LibraryService {
+
     private final LibraryRepository libraryRepository;
     private final BookServiceClient bookServiceClient;
 
-    @GrpcClient("bookService")
-    private BookServiceGrpc.BookServiceBlockingStub bookServiceBlockingStub;
+    @GrpcClient("book-service")
+    public BookServiceGrpc.BookServiceBlockingStub bookServiceBlockingStub ;
 
-    public LibraryService(LibraryRepository libraryRepository, BookServiceClient bookServiceClient) {
+    public LibraryService(LibraryRepository libraryRepository,
+                          BookServiceClient bookServiceClient) {
         this.libraryRepository = libraryRepository;
         this.bookServiceClient = bookServiceClient;
     }

@@ -1,9 +1,10 @@
 package com.company.bookservice.service;
 
-import com.company.bookservice.BookId;
-import com.company.bookservice.BookServiceGrpc;
-import com.company.bookservice.Isbn;
+
+import com.company.bookservice.dto.BookId;
 import com.company.bookservice.dto.BookIdDto;
+import com.company.bookservice.dto.BookServiceGrpc;
+import com.company.bookservice.dto.Isbn;
 import io.grpc.stub.StreamObserver;
 import net.devh.boot.grpc.server.service.GrpcService;
 import org.slf4j.Logger;
